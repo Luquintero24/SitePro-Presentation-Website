@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000 + index * 500);
     });
     
+    
     // Add loading animation to images and handle errors
     const images = document.querySelectorAll('img');
     images.forEach(img => {

@@ -142,8 +142,34 @@ body {
 .letter-3d:nth-child(5) { animation-delay: 0.8s; }
 
 .letter-3d:hover {
-    transform: translateY(-10px) rotateX(15deg) scale(1.1);
-    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-15px) rotateX(20deg) rotateY(10deg) scale(1.2);
+    text-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.5);
+    color: #60a5fa;
+}
+
+.title-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: titleGlow 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes titleGlow {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 }
 
 @keyframes letterFloat {
@@ -229,9 +255,10 @@ body {
 
 .floating-icon {
     position: absolute;
-    font-size: 2rem;
+    font-size: 3.5rem;
     animation: float 6s ease-in-out infinite;
-    opacity: 0.6;
+    opacity: 0.7;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 .floating-icon:nth-child(1) {
@@ -305,6 +332,7 @@ body {
     right: 20%;
     animation-delay: 0.5s;
 }
+
 
 @keyframes float {
     0%, 100% { 
@@ -381,6 +409,7 @@ body {
     right: 5%;
     animation-delay: 5s;
 }
+
 
 @keyframes shapeFloat {
     0%, 100% { 
@@ -539,6 +568,10 @@ body {
     background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
     color: white;
     position: relative;
+}
+
+.team-section .section-title {
+    color: white;
 }
 
 .team-section::before {

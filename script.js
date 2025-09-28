@@ -129,6 +129,95 @@ function updateMeetingTimes() {
 document.addEventListener('DOMContentLoaded', () => {
     updateMeetingTimes();
     
+    // 3D Letter Interactions
+    const letters = document.querySelectorAll('.letter-3d');
+    letters.forEach((letter, index) => {
+        letter.addEventListener('mouseenter', () => {
+            letter.style.transform = 'translateY(-15px) rotateX(20deg) rotateY(10deg) scale(1.2)';
+            letter.style.textShadow = '0 15px 30px rgba(0, 0, 0, 0.4)';
+        });
+        
+        letter.addEventListener('mouseleave', () => {
+            letter.style.transform = '';
+            letter.style.textShadow = '';
+        });
+        
+        letter.addEventListener('click', () => {
+            // Create ripple effect
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+                width: 100px;
+                height: 100px;
+                left: 50%;
+                top: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+            `;
+            
+            letter.style.position = 'relative';
+            letter.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // Add ripple animation CSS
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Floating elements interaction
+    const floatingIcons = document.querySelectorAll('.floating-icon');
+    floatingIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'scale(1.5) rotate(360deg)';
+            icon.style.opacity = '1';
+        });
+        
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = '';
+            icon.style.opacity = '0.6';
+        });
+    });
+    
+    // Floating shapes interaction
+    const floatingShapes = document.querySelectorAll('.shape');
+    floatingShapes.forEach(shape => {
+        shape.addEventListener('mouseenter', () => {
+            shape.style.transform = 'scale(1.3) rotate(45deg)';
+            shape.style.opacity = '0.8';
+        });
+        
+        shape.addEventListener('mouseleave', () => {
+            shape.style.transform = '';
+            shape.style.opacity = '0.3';
+        });
+    });
+    
+    // Add random movement to shapes
+    floatingShapes.forEach((shape, index) => {
+        setInterval(() => {
+            const randomX = Math.random() * 20 - 10;
+            const randomY = Math.random() * 20 - 10;
+            shape.style.transform += ` translate(${randomX}px, ${randomY}px)`;
+        }, 3000 + index * 500);
+    });
+    
     // Add loading animation to images and handle errors
     const images = document.querySelectorAll('img');
     images.forEach(img => {

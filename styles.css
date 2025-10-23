@@ -562,6 +562,155 @@ body {
     font-size: 1rem;
 }
 
+/* Stage 2 Section */
+.stage2-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    position: relative;
+}
+
+.stage2-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23cbd5e1" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.5;
+}
+
+.stage2-description {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.stage2-description p {
+    font-size: 1.2rem;
+    color: #475569;
+    line-height: 1.7;
+}
+
+.stage2-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.stage2-member {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.stage2-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.stage2-member:hover::before {
+    transform: scaleX(1);
+}
+
+.stage2-member:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.member-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.member-avatar {
+    flex-shrink: 0;
+}
+
+.member-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.stage2-member:hover .member-avatar img {
+    border-color: #3b82f6;
+    transform: scale(1.05);
+}
+
+.member-info h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.member-role {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.member-responsibilities {
+    margin-top: 1rem;
+}
+
+.member-responsibilities ul {
+    list-style: none;
+    padding: 0;
+}
+
+.member-responsibilities li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #475569;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.member-responsibilities li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #3b82f6;
+    font-size: 0.8rem;
+    top: 0.2rem;
+}
+
+.member-responsibilities li:hover {
+    color: #1e293b;
+    transform: translateX(5px);
+    transition: all 0.3s ease;
+}
+
 /* Team Section */
 .team-section {
     padding: 80px 0;
@@ -918,6 +1067,20 @@ body {
     }
 
     .event-date-badge {
+        align-self: center;
+    }
+
+    .stage2-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .member-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .member-avatar {
         align-self: center;
     }
 }
